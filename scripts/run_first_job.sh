@@ -9,4 +9,4 @@ mv ${first_job} ${tmp_name}
 echo Running ${first_job}
 bash ${initial_path}/${tmp_name}
 rm ${tmp_name}
-echo ${tmp_name} | grep -oP "\d+."${extension} >> jobs_done
+echo ${tmp_name} | xargs basename | grep -oP "\w+."${extension} >> jobs_done
