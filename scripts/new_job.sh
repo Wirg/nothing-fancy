@@ -9,11 +9,15 @@ OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
 # Initialize variables:
 file_header=''
+job_name_suffix=''
 
-while getopts "p?:" opt; do
+while getopts "p?n:" opt; do
     case "$opt" in
     p)
         file_header=_${file_header}
+        ;;
+    n)
+        job_name_suffix=_$OPTARG
         ;;
     esac
 done
@@ -24,4 +28,4 @@ shift $((OPTIND-1))
 
 args=$@
 
-echo git checkout ${commit} "&&" "$@" > jobs/${file_header}${time}_$(whoami).job
+echo git checkout ${commit} "&&" "$@" > jobs/${file_header}${time}${job_name_suffix}_$(whoami).job
