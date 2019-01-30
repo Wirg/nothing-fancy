@@ -24,4 +24,4 @@ shift $((OPTIND-1))
 
 args=$@
 
-echo git checkout ${commit} "&&" "$@" > jobs/${file_header}${time}.job
+echo git checkout ${commit} "&&" "$@" > jobs/${file_header}${time}_$(whoami).job
