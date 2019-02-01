@@ -2,7 +2,7 @@
 commit=`git rev-parse HEAD`
 time=`date +%Y%m%d_%H%M%S`
 
-#!/bin/sh
+job_dir=${BASE_DIRECTORY}/jobs
 
 # A POSIX variable
 OPTIND=1         # Reset in case getopts has been used previously in the shell.
@@ -28,4 +28,4 @@ shift $((OPTIND-1))
 
 args=$@
 
-echo git checkout ${commit} "&&" "$@" > jobs/${file_header}${time}${job_name_suffix}_$(whoami).job
+echo git pull "&&" git checkout ${commit} "&&" "$@" > ${job_dir}/${file_header}${time}${job_name_suffix}_$(whoami).job

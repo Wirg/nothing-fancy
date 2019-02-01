@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-job_dir=jobs
+job_dir=${BASE_DIRECTORY}/jobs
+working_dir=${BASE_DIRECTORY}/working_directory/totem
 extension=job
 initial_path=`pwd`
 # hello.job
@@ -15,7 +16,9 @@ mv ${first_job} ${tmp_name}
 
 echo Running ${job_name}
 
-bash ${initial_path}/${tmp_name}
+cd ${working_dir}
+bash ${tmp_name}
+cd ${initial_path}
 rm ${tmp_name}
 
 # Dumping
