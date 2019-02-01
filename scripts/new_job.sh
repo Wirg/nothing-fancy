@@ -28,4 +28,4 @@ shift $((OPTIND-1))
 
 args=$@
 
-echo git pull "&&" git checkout ${commit} "&&" "$@" > ${job_dir}/${file_header}${time}${job_name_suffix}_$(whoami).job
+echo git fetch --all "&&" git checkout ${commit} "&&" "$@" > ${job_dir}/${file_header}${time}${job_name_suffix}_$(whoami).job
