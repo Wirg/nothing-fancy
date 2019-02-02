@@ -13,13 +13,16 @@ OPTIND=1         # Reset in case getopts has been used previously in the shell.
 file_header=''
 job_name_suffix=''
 
-while getopts "p?n:" opt; do
+while getopts ":pn:" opt; do
     case "$opt" in
     p)
         file_header=_${file_header}
         ;;
     n)
         job_name_suffix=_$OPTARG
+        ;;
+    \?)
+        echo "Invalid option: -$OPTARG" >&2
         ;;
     esac
 done
