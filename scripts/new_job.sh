@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-commit=`git rev-parse HEAD`
-time=`date +%Y%m%d_%H%M%S`
+
+BASE_DIRECTORY=$(dirname "$0")/..
+commit=$(git rev-parse HEAD)
+time=$(date +%Y%m%d_%H%M%S)
 
 job_dir=${BASE_DIRECTORY}/jobs
 
@@ -26,6 +28,4 @@ shift $((OPTIND-1))
 
 [[ "${1:-}" = "--" ]] && shift
 
-args=$@
-
-echo git fetch --all "&&" git checkout ${commit} "&&" "$@" > ${job_dir}/${file_header}${time}${job_name_suffix}_$(whoami).job
+echo git fetch origin "&&" git checkout "${commit}" "&&" "$@" > "${job_dir}"/${file_header}"${time}""${job_name_suffix}"_"$(whoami)".job
