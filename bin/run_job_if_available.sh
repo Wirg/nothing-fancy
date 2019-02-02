@@ -8,7 +8,7 @@ if [ "$number_of_jobs" -gt 0 ]
 then
 if [ "$number_of_gpu_jobs" -eq 0 ]
 then
-    bash "${BASE_DIRECTORY}"/scripts/run_first_job.sh
+    bash "${BASE_DIRECTORY}"/bin/run_first_job.sh
 else
     echo "GPU is not available"
 fi
