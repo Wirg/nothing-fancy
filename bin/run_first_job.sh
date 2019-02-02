@@ -9,15 +9,15 @@ first_job=$(/bin/ls "${job_dir}" | grep -P ".*.job$" | sort -g | head -n 1)
 job_name=${first_job%.*}
 # jobs/hello.job
 first_job=${job_dir}/${first_job}
-tmp_name=$(pwd)/${first_job}~${WORKER_NAME}
+tmp_name=${first_job}~${WORKER_NAME}
 # jobs/hello.job~worker_i
 mv "${first_job}" "${tmp_name}"
 
 echo Running "${job_name}" at "${tmp_name}"
-cd "${working_dir}" || exit
 
+cd "${working_dir}"
 bash "${tmp_name}"
-cd "${initial_path}"
+
 rm "${tmp_name}"
 
 # Dumping
