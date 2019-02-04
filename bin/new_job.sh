@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-source base_config.sh
+source $(dirname "$0")/base_config.sh
+
 commit=$(git rev-parse HEAD)
 time=$(date +%Y%m%d_%H%M%S)
 
-# A POSIX variable
 OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
-# Initialize variables:
 file_header=''
 job_name_suffix=''
 
@@ -28,4 +27,4 @@ shift $((OPTIND-1))
 
 [[ "${1:-}" = "--" ]] && shift
 
-echo git fetch origin "&&" git checkout "${commit}" "&&" "$@" > "${job_dir}"/${file_header}"${time}""${job_name_suffix}"_"$(whoami)".job
+echo cd "./totem" "&&" git fetch origin "&&" git checkout "${commit}" "&&" "$@" > "${job_dir}"/${file_header}"${time}""${job_name_suffix}"_"$(whoami)".job

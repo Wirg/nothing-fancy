@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source base_config.sh
+source $(dirname "$0")/base_config.sh
+
 # hello.job
 first_job=$(queue_jobs | sort -g | head -n 1)
 # hello
