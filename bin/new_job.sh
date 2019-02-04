@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-
-BASE_DIRECTORY=$(dirname "$0")/..
+source base_config.sh
 commit=$(git rev-parse HEAD)
 time=$(date +%Y%m%d_%H%M%S)
-
-job_dir=${BASE_DIRECTORY}/jobs
 
 # A POSIX variable
 OPTIND=1         # Reset in case getopts has been used previously in the shell.

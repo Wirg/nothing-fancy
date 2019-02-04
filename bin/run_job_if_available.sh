@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-BASE_DIRECTORY=$(dirname "$0")/..
-job_dir=${BASE_DIRECTORY}/jobs
-number_of_jobs=$(/bin/ls "${job_dir}" | grep -cP ".*.job")
+source base_config.sh
+number_of_jobs=$(queue_jobs | wc -l)
 number_of_gpu_jobs=$(nvidia-smi | grep "python" | grep -cP "\d{4,}MiB")
+
+echo ${number_of_jobs}
 
 if [ "$number_of_jobs" -gt 0 ]
 then
