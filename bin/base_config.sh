@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export BASE_DIRECTORY=$(dirname "$0")/..
+export BASE_DIRECTORY=$(realpath $(dirname "$0")/..)
 export job_dir=${BASE_DIRECTORY}/jobs
 export working_dir=${BASE_DIRECTORY}/working_directory/totem
 export WORKER_NAME=default
