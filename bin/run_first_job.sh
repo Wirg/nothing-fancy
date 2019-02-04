@@ -2,7 +2,7 @@
 source $(dirname "$0")/base_config.sh
 
 # hello.job
-first_job=$(queue_jobs | sort -g | head -n 1)
+first_job=$(/bin/ls "${job_dir}" | grep -P ".*.job$" | sort -g | head -n 1)
 # hello
 job_name=${first_job%.*}
 # jobs/hello.job

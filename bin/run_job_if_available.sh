@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source $(dirname "$0")/base_config.sh
 
-number_of_jobs=$(queue_jobs | wc -l)
+number_of_jobs=$(/bin/ls "${job_dir}" | grep -cP ".*.job$")
 number_of_gpu_jobs=$(nvidia-smi | grep "python" | grep -cP "\d{4,}MiB")
 
 echo ${number_of_jobs}
